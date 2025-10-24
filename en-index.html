@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Middle East Players — الرؤية الرياضية</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
+
+  <style>
+    :root{
+      --gold: #ceac4c;
+      --gold-dark: #b58f40;
+      --text: #111;
+      --muted: #6b7280;
+      --bg: #ffffff;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Cairo',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.7;
+      text-align:center;
+    }
+
+ header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  z-index: 100;
+}
+
+/* ✅ ترتيب فعلي: اللوجو يسار، المنيو يمين */
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row-reverse; /* هذا هو السر */
+}
+
+/* اللوجو */
+.logo img {
+  height: 48px;
+  filter: brightness(0);
+}
+
+/* المنيو */
+.desktop-nav {
+  display: flex;
+  gap: 18px;
+  font-weight: 700;
+}
+.desktop-nav a {
+  color: #111;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  position: relative;
+  transition: 0.3s;
+}
+.desktop-nav a:hover,
+.desktop-nav a.active {
+  color: #ceac4c;
+}
+.desktop-nav a.active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 60%;
+  height: 2px;
+  background: #ceac4c;
+  border-radius: 4px;
+}
+
+/* زر الموبايل */
+.mobile-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 22px;
+}
+@media (max-width: 900px) {
+  .desktop-nav {
+    display: none;
+  }
+  .mobile-btn {
+    display: block;
+  }
+}
+
+
+    /* Drawer */
+    .drawer{
+      position:fixed;
+      top:0;bottom:0;right:-100%;
+      width:280px;max-width:85vw;
+      background:#fff;
+      box-shadow:-6px 0 25px rgba(0,0,0,0.1);
+      padding:24px;
+      transition:.35s;
+      z-index:120;
+      text-align:center;
+    }
+    .drawer.open{right:0}
+    .drawer .close{
+      background:none;border:none;font-size:22px;cursor:pointer;margin-bottom:10px;
+    }
+    .drawer nav a{
+      display:block;
+      text-decoration:none;
+      color:var(--text);
+      padding:10px;border-radius:8px;
+    }
+    .drawer nav a:hover{background:#f8f8f8;color:var(--gold)}
+
+    /* Hero */
+    .hero{
+      margin-top:80px;
+      position:relative;
+      height:85vh;
+      min-height:560px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:url("https://res.cloudinary.com/dcbxuax2c/image/upload/v1761263484/Pngtree_contemporary_fitness_zone_with_cutting_8839170_rffjrd.jpg") center/cover no-repeat;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;inset:0;
+      background:rgba(0,0,0,0.6);
+    }
+    .hero-content{
+      position:relative;
+      z-index:2;
+      color:#fff;
+      max-width:800px;
+      padding:0 18px;
+    }
+    .hero-content h1{
+      font-size:40px;
+      font-weight:800;
+      margin-bottom:16px;
+    }
+    .hero-content p{
+      font-size:18px;
+      color:rgba(255,255,255,0.9);
+      margin-bottom:28px;
+    }
+    .hero-ctas{
+      display:flex;
+      justify-content:center;
+      gap:14px;
+    }
+    .btn-primary,.btn-ghost{
+      padding:12px 24px;
+      border-radius:8px;
+      font-weight:700;
+      text-decoration:none;
+      transition:.3s;
+    }
+    .btn-primary{
+      background:var(--gold);
+      color:#111;
+    }
+    .btn-primary:hover{background:var(--gold-dark)}
+    .btn-ghost{
+      border:2px solid rgba(255,255,255,0.4);
+      color:#fff;
+    }
+    .btn-ghost:hover{background:rgba(255,255,255,0.1)}
+
+    @media(max-width:700px){
+      .hero-content h1{font-size:30px}
+      .hero-content p{font-size:16px}
+      .hero-ctas{flex-direction:column;align-items:center}
+    }
+
+    /* Sections */
+    section{padding:70px 18px;text-align:center;}
+    .section-inner{max-width:1100px;margin:0 auto;}
+    .section-title{
+      font-size:26px;
+      margin-bottom:24px;
+      color:var(--text);
+      font-weight:800;
+      position:relative;
+      display:inline-block;
+    }
+    .section-title::after{
+      content:"";
+      display:block;
+      width:60px;
+      height:4px;
+      background:var(--gold);
+      border-radius:4px;
+      margin:8px auto 0;
+    }
+    .muted{color:var(--muted)}
+
+    /* About */
+    .about-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:28px;
+      align-items:center;
+      text-align:center;
+    }
+    .about-grid img{
+      width:100%;
+      height:450px;
+      object-fit:cover;
+      border-radius:12px;
+    }
+    .about-card{
+      background:#fff;
+      padding:20px;
+      border-radius:12px;
+      border:1px solid #eee;
+      box-shadow:0 4px 16px rgba(0,0,0,0.04);
+    }
+
+    /* Services */
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:20px;
+      text-align:center;
+    }
+    .service{
+      background:#fff;
+      padding:20px;
+      border-radius:12px;
+      border-top:5px solid var(--gold);
+      box-shadow:0 4px 18px rgba(0,0,0,0.05);
+    }
+
+    /* CONTACT */
+    #contact{
+      background:#fbfbfb;
+    }
+    .contact-wrapper{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:40px;
+      align-items:start;
+      text-align:center;
+    }
+    .contact-info{
+      background:#fff;
+      border-radius:12px;
+      padding:25px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.06);
+    }
+    .contact-info h3{
+      color:var(--gold);
+      margin-bottom:15px;
+    }
+    .contact-info p{
+      margin:8px 0;
+      color:var(--muted);
+      font-weight:600;
+    }
+    .contact-info i{
+      color:var(--gold);
+      margin-left:6px;
+    }
+
+    .contact-form{
+      background:#fff;
+      padding:25px;
+      border-radius:12px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.06);
+    }
+    .contact-form input,.contact-form textarea,.contact-form select{
+      width:100%;
+      margin:10px 0;
+      padding:12px;
+      border:1px solid #ddd;
+      border-radius:8px;
+      font-size:15px;
+      text-align:center;
+    }
+    .contact-form button{
+      width:100%;
+      padding:12px;
+      background:var(--gold);
+      border:none;
+      border-radius:8px;
+      font-weight:700;
+      font-size:16px;
+      color:#111;
+      cursor:pointer;
+      transition:.3s;
+    }
+    .contact-form button:hover{background:var(--gold-dark)}
+    .contact-map iframe{
+      width:100%;
+      height:260px;
+      border:0;
+      border-radius:12px;
+      margin-top:20px;
+    }
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* مسافة بين الأيقونة والنص */
+  direction: ltr; /* تأكد أن اتجاه النص من اليسار لليمين للأيقونات */
+}
+    /* Footer */
+    footer{
+      background:#0f1724;
+      color:#cbd5e1;
+      padding:50px 18px 30px;
+      text-align:center;
+    }
+    .footer-grid{
+      max-width:1100px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
+      text-align:center;
+    }
+    .footer-grid img{height:50px;filter:brightness(0) invert(1);} /* أبيض في الخلفية الداكنة */
+    .footer-links a{
+      display:block;
+      color:inherit;
+      text-decoration:none;
+      margin:6px 0;
+      transition:.3s;
+    }
+    .footer-links a:hover{color:var(--gold)}
+    .socials-footer a{
+      display:inline-block;
+      margin-inline:6px;
+      color:#cbd5e1;
+      font-size:18px;
+      transition:.3s;
+    }
+    .socials-footer a:hover{color:var(--gold)}
+    .footer-bottom{
+      text-align:center;
+      color:#94a3b8;
+      font-size:14px;
+      margin-top:30px;
+    }
+      /* إعدادات أولية للمحتوى */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+  }
+  .fade-in-up.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-container">
+    <!-- Logo Left -->
+    <div class="logo">
+      <img src="https://res.cloudinary.com/dcbxuax2c/image/upload/v1761263096/_%D8%B4%D8%B1%D9%8A%D9%83%D9%83_%D8%A7%D9%84%D8%A3%D9%85%D8%AB%D9%84_%D9%81%D9%8A_%D8%A7%D9%84%D8%AA%D9%85%D9%8A%D8%B2_%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%D9%8A_%D8%A7%D9%84%D8%B1%D8%A4%D9%8A%D8%A9_%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%D9%8A%D8%A9_3_1.pdf_1_zy32yt.png" alt="logo">
+    </div>
+
+    <!-- Desktop Menu -->
+    <nav class="desktop-nav">
+      <a href="en-contact.html">Contact Us</a>
+      <a href="en-programs.html">Training Programs</a>
+      <a href="en-services.html">Services</a>
+      <a href="en-about.html">About Us</a>
+      <a href="en-index.html" class="active">Home</a>
+    </nav>
+
+    <!-- Language Switch for Desktop (يظهر فقط على الديسكتوب) -->
+    <div class="lang-switch desktop-lang">
+      <a href="index.html" class="lang-btn">AR</a>
+      <a href="en-index.html" class="lang-btn active">EN</a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button class="mobile-btn" id="openDrawer">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+</header>
+
+<!-- Drawer (Mobile Menu) -->
+<aside id="drawer" class="drawer">
+  <button class="close" id="closeDrawer"><i class="fa-solid fa-xmark"></i></button>
+
+  <nav class="mobile-nav">
+      <a href="en-contact.html">Contact Us</a>
+      <a href="en-programs.html">Training Programs</a>
+      <a href="en-services.html">Services</a>
+      <a href="en-about.html">About Us</a>
+      <a href="en-index.html" class="active">Home</a>
+  </nav>
+
+  <!-- Language Switch INSIDE Drawer (Mobile Only) -->
+  <div class="lang-switch mobile-lang">
+      <a href="index.html" class="lang-btn">AR</a>
+      <a href="en-index.html" class="lang-btn active">EN</a>
+  </div>
+</aside>
+
+<!-- Minimal CSS -->
+<style>
+  /* عام */
+  .lang-switch {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin-left: 10px;
+  }
+
+  .lang-btn {
+    font-size: 12px;
+    padding: 3px 6px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #333;
+  }
+
+  .lang-btn.active {
+    background: #333;
+    color: #fff;
+  }
+
+  .mobile-lang {
+    margin-top: 20px;
+    display: none; /* مخفي افتراضيًا */
+  }
+
+  /* Desktop */
+  .desktop-lang {
+    display: flex;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .desktop-nav,
+    .desktop-lang {
+      display: none; /* اخفاء القائمة والديسكتوب للغة على الموبايل */
+    }
+
+    .mobile-lang {
+      display: flex; /* اظهار اللغة داخل السلايد */
+    }
+
+    .mobile-btn {
+      display: block;
+    }
+  }
+
+  /* Drawer basic styling */
+  .drawer {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 250px;
+    height: 100%;
+    background: #fff;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+    padding: 20px;
+    transition: right 0.3s ease;
+    z-index: 9999;
+  }
+
+  .drawer.open {
+    right: 0;
+  }
+
+  .drawer .close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+
+  .mobile-nav a {
+    display: block;
+    padding: 10px 0;
+    text-decoration: none;
+    color: #333;
+  }
+</style>
+
+
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-content">
+    <h1>Your Ultimate Partner in Sports Excellence</h1>
+    <p>We provide comprehensive sports solutions for clubs and individuals — training, development, tournament organization, and professional academies.</p>
+    <div class="hero-ctas">
+      <a href="#services" class="btn-primary">Our Services</a>
+      <a href="#contact" class="btn-ghost">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <h2 class="section-title">About the Company</h2>
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>Who We Are</h3>
+        <p class="muted">A leading company providing integrated sports solutions based in Riyadh, Saudi Arabia. We believe sports is a lifestyle and aim to enhance athletic performance for clubs and individuals.</p>
+        <div style="margin-top:16px">
+          <strong style="color:var(--gold)">Vision:</strong> Empowering sports locally and internationally.<br>
+          <strong style="color:var(--gold)">Mission:</strong> Promoting sports culture and building outstanding partnerships.
+        </div>
+      </div>
+      <img src="https://res.cloudinary.com/dcbxuax2c/image/upload/v1761275888/_%D8%B4%D8%B1%D9%8A%D9%83%D9%83_%D8%A7%D9%84%D8%A3%D9%85%D8%AB%D9%84_%D9%81%D9%8A_%D8%A7%D9%84%D8%AA%D9%85%D9%8A%D8%B2_%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%D9%8A_%D8%A7%D9%84%D8%B1%D8%A4%D9%8A%D8%A9_%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%D9%8A%D8%A9_3_1.pdf_2_s6jal1.png" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- OUR SERVICES -->
+<section id="services" style="background:#fbfbfb">
+  <div class="section-inner">
+    <h2 class="section-title">Our Services</h2>
+    <div class="services-grid">
+      <div class="service">
+        <h4>Providing Trainers</h4>
+        <p class="muted">Professional trainers with local and international experience to develop clubs and individuals.</p>
+      </div>
+      <div class="service">
+        <h4>Tournament Organization</h4>
+        <p class="muted">Organizing local and regional tournaments with professional management and integrated planning.</p>
+      </div>
+      <div class="service">
+        <h4>Academy Setup</h4>
+        <p class="muted">Designing and establishing academies and gyms according to modern operational standards.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINING PROGRAMS -->
+<section class="training-programs" style="padding:50px 20px; background:#f9f9f9; position:relative; min-height:100vh;">
+  <h1 style="text-align:center; font-size:2.5rem; color:#B58F40; margin-top:20vh; transform:translateY(-50%);">Our Training Programs</h1>
+  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:30px; max-width:1200px; margin:auto; margin-top:60px; direction:rtl; text-align:right;">
+    <!-- Zumba -->
+    <div style="background:#fff; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.1); width:350px; display:flex; flex-direction:column; overflow:hidden; transition:all 0.3s;">
+      <img src="https://res.cloudinary.com/dcbxuax2c/image/upload/v1761318408/istockphoto-1437503915-612x612_rba7iv.jpg" alt="Zumba" style="width:100%; height:200px; object-fit:cover;">
+      <div style="padding:20px; flex-grow:1;">
+        <h3 style="margin-top:0; color:#B58F40; font-size:1.5rem;">Zumba</h3>
+        <p style="color:#555; line-height:1.6; font-size:0.95rem;">A dynamic and fun program that helps burn calories and lift mood through dance and energetic movement.</p>
+        <ul style="padding-right:20px; margin:10px 0; color:#555; font-size:0.95rem;">
+          <li>High-energy aerobic sessions: high/low impact.</li>
+          <li>Mix of cardio exercises suitable for all levels.</li>
+          <li>Fun exercises that burn calories and improve mood.</li>
+        </ul>
+      </div>
+      <a href="https://wa.me/966555627861" target="_blank" style="display:block; margin:0 20px 20px 20px; padding:12px 0; text-align:center; background:#B58F40; color:#fff; border-radius:8px; font-weight:bold; text-decoration:none; transition:background 0.3s;">Join Now</a>
+    </div>
+
+    <!-- Step Aerobics -->
+    <div style="background:#fff; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.1); width:350px; display:flex; flex-direction:column; overflow:hidden; transition:all 0.3s;">
+      <img src="https://res.cloudinary.com/dcbxuax2c/image/upload/v1761318455/istockphoto-1064106354-612x612_emybsn.jpg" alt="Step Aerobics" style="width:100%; height:200px; object-fit:cover;">
+      <div style="padding:20px; flex-grow:1;">
+        <h3 style="margin-top:0; color:#B58F40; font-size:1.5rem;">Step Aerobics</h3>
+        <p style="color:#555; line-height:1.6; font-size:0.95rem;">Dynamic exercise using an elevated platform to improve coordination and body strength.</p>
+        <ul style="padding-right:20px; margin:10px 0; color:#555; font-size:0.95rem;">
+          <li>High-energy training sessions.</li>
+          <li>Enhances balance and fitness.</li>
+          <li>Strengthens key muscles and overall body movement.</li>
+        </ul>
+      </div>
+      <a href="https://wa.me/966555627861" target="_blank" style="display:block; margin:0 20px 20px 20px; padding:12px 0; text-align:center; background:#B58F40; color:#fff; border-radius:8px; font-weight:bold; text-decoration:none; transition:background 0.3s;">Join Now</a>
+    </div>
+
+    <!-- Guided Fitness -->
+    <div style="background:#fff; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.1); width:350px; display:flex; flex-direction:column; overflow:hidden; transition:all 0.3s;">
+      <img src="https://res.cloudinary.com/dcbxuax2c/image/upload/v1761318490/istockphoto-1067774764-612x612_tfduoe.jpg" alt="Guided Fitness" style="width:100%; height:200px; object-fit:cover;">
+      <div style="padding:20px; flex-grow:1;">
+        <h3 style="margin-top:0; color:#B58F40; font-size:1.5rem;">Guided Fitness Classes</h3>
+        <p style="color:#555; line-height:1.6; font-size:0.95rem;">Comprehensive training sessions to improve strength, flexibility, and stability.</p>
+        <ul style="padding-right:20px; margin:10px 0; color:#555; font-size:0.95rem;">
+          <li>Bodyweight and light weight exercises.</li>
+          <li>Sessions to improve balance and flexibility.</li>
+          <li>Targeting major muscles to prevent injuries.</li>
+        </ul>
+      </div>
+      <a href="https://wa.me/966555627861" target="_blank" style="display:block; margin:0 20px 20px 20px; padding:12px 0; text-align:center; background:#B58F40; color:#fff; border-radius:8px; font-weight:bold; text-decoration:none; transition:background 0.3s;">Join Now</a>
+    </div>
+
+    <!-- Weight Loss -->
+    <div style="background:#fff; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.1); width:350px; display:flex; flex-direction:column; overflow:hidden; transition:all 0.3s;">
+      <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?fit=crop&w=800&q=80" alt="Weight Loss" style="width:100%; height:200px; object-fit:cover;">
+      <div style="padding:20px; flex-grow:1;">
+        <h3 style="margin-top:0; color:#B58F40; font-size:1.5rem;">Weight Loss Programs</h3>
+        <p style="color:#555; line-height:1.6; font-size:0.95rem;">Comprehensive plans supported with nutritional guidance to achieve realistic weight loss goals.</p>
+        <ul style="padding-right:20px; margin:10px 0; color:#555; font-size:0.95rem;">
+          <li>Complete training programs.</li>
+          <li>Individual sessions tailored to body condition and goals.</li>
+          <li>Workshops on healthy nutrition.</li>
+        </ul>
+      </div>
+      <a href="https://wa.me/966555627861" target="_blank" style="display:block; margin:0 20px 20px 20px; padding:12px 0; text-align:center; background:#B58F40; color:#fff; border-radius:8px; font-weight:bold; text-decoration:none; transition:background 0.3s;">Join Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETING & CONTACT -->
+<section id="marketing-contact" style="padding:50px 20px; background:#B58F40; color:#fff; text-align:center;">
+  <h2 style="font-size:2.5rem; margin-bottom:20px;">Kickstart Your Sports Journey with Vision Sports</h2>
+  <p style="font-size:1.2rem; margin-bottom:30px; max-width:700px; margin-left:auto; margin-right:auto; line-height:1.6;">
+    Let our experts help you achieve the best results with professional guidance, integrated programs, and diverse services. Contact us now to start a truly professional experience.
+  </p>
+  <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:15px; margin-bottom:40px;">
+    <a href="https://wa.me/966555627861" target="_blank" style="background:#fff; color:#B58F40; padding:12px 25px; border-radius:8px; text-decoration:none; font-weight:700; transition:0.3s;">Contact via WhatsApp</a>
+    <a href="https://mail.google.com/mail/?view=cm&to=Saed@thejubileeeco.com" target="_blank" style="background:#fff; color:#B58F40; padding:12px 25px; border-radius:8px; text-decoration:none; font-weight:700; transition:0.3s;">Send Email</a>
+    <a href="https://www.instagram.com" target="_blank" style="background:#fff; color:#B58F40; padding:12px 25px; border-radius:8px; text-decoration:none; font-weight:700; transition:0.3s;">Instagram</a>
+    <a href="https://www.facebook.com" target="_blank" style="background:#fff; color:#B58F40; padding:12px 25px; border-radius:8px; text-decoration:none; font-weight:700; transition:0.3s;">Facebook</a>
+  </div>
+  <div style="font-size:1rem; line-height:1.6;">
+    <p><strong>Email:</strong> Saed@thejubileeeco.com</p>
+    <p><strong>Phone:</strong> +966 55 5627 861</p>
+    <p><strong>Address:</strong> Al Safwa Commercial Center, Prince Mamduh Bin Abdulaziz St, As Sulimaniyah, Riyadh 12245</p>
+  </div>
+</section>
+
+<style>
+  #marketing-contact a:hover {
+    background:#fff;
+    transform: scale(1.05);
+  }
+</style>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <img src="https://res.cloudinary.com/dcbxuax2c/image/upload/v1761263096/_%D8%B4%D8%B1%D9%8A%D9%83%D9%83_%D8%A7%D9%84%D8%A3%D9%85%D8%AB%D9%84_%D9%81%D9%8A_%D8%A7%D9%84%D8%AA%D9%85%D9%8A%D8%B2_%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%D9%8A_%D8%A7%D9%84%D8%B1%D8%A4%D9%8A%D8%A9_%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%D9%8A%D8%A9_3_1.pdf_1_zy32yt.png" alt="logo">
+      <p style="margin-top:10px;">Your Perfect Partner in Sports Excellence</p>
+      <div class="socials-footer" style="margin-top:10px;">
+        <a href="https://wa.me/966555627861" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <a href="en-index.html">Home</a>
+      <a href="en-about.html">About Us</a>
+      <a href="en-services.html">Services</a>
+      <a href="en-programs.html">Training Programs</a>
+      <a href="en-contact.html" class="active">Contact Us</a>
+    </div>
+
+    <div>
+      <h4>Contact Us</h4>
+      <p><i class="fa-solid fa-phone"></i> +966555627861</p>
+      <p><i class="fa-solid fa-envelope"></i> Saed@thejubileeeco.com</p>
+      <p><i class="fa-solid fa-location-dot"></i> Riyadh, Saudi Arabia</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Middle East Players. All rights reserved.</p>
+  </div>
+</footer>
+
+
+  <!-- JS -->
+  <script>
+    const openDrawer = document.getElementById('openDrawer');
+    const closeDrawer = document.getElementById('closeDrawer');
+    const drawer = document.getElementById('drawer');
+    openDrawer.addEventListener('click', () => drawer.classList.add('open'));
+    closeDrawer.addEventListener('click', () => drawer.classList.remove('open'));
+    drawer.querySelectorAll('a').forEach(link => link.addEventListener('click', () => drawer.classList.remove('open')));
+
+    function submitContact(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const service = document.getElementById('service').value;
+      const message = document.getElementById('message').value;
+      const whatsappMsg = `مرحبًا، أنا ${name}.\nبريدي: ${email}\nالخدمة المطلوبة: ${service}\nالرسالة:\n${message}`;
+      const encodedMsg = encodeURIComponent(whatsappMsg);
+      window.open(`https://wa.me/966555627861?text=${encodedMsg}`, '_blank');
+      return false;
+    }
+// Modal functionality
+const modal = document.getElementById("modal");
+const modalTitle = document.getElementById("modal-title");
+const modalDesc = document.getElementById("modal-desc");
+const closeBtn = document.querySelector(".close");
+  document.addEventListener("DOMContentLoaded", function() {
+    const elements = document.querySelectorAll("body > *"); // جميع العناصر المباشرة داخل body
+
+    elements.forEach((el, index) => {
+      el.classList.add("fade-in-up"); // إضافة الكلاس الابتدائي
+      setTimeout(() => {
+        el.classList.add("show"); // تفعيل الحركة تدريجياً
+      }, index * 150); // تأخير 150ms بين كل عنصر
+    });
+  });
+  </script>
+
+</body>
+</html>
